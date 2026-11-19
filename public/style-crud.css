@@ -1,0 +1,663 @@
+:root {
+  --biru: #2f4bd8;
+  --biru-tua: #2339a8;
+  --teks: #1b2430;
+  --redup: #667085;
+  --garis: #e1e5ec;
+  --latar: #f6f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--latar);
+  color: var(--teks);
+  font: 15px/1.5 "Segoe UI", system-ui, sans-serif;
+}
+
+.atas {
+  background: var(--biru);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.atas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.atas::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.atas .garis-tepi {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.atas .garis-kotak-kiri,
+.atas .garis-kotak-kanan {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.atas .garis-kotak-kiri {
+  left: 6px;
+  border-left: none;
+}
+
+.atas .garis-kotak-kanan {
+  right: 6px;
+  border-right: none;
+}
+
+.atas .isi {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.merek {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.tersedia {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tersedia span {
+  font-size: 14px;
+  color: #dbe2ff;
+}
+
+.tersedia b {
+  padding: 3px 12px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 14px;
+}
+
+.wadah {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+.judul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.judul h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 9px 11px;
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  background: #fff;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--biru);
+  border-color: transparent;
+}
+
+.tombol {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 16px;
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--teks);
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.utama {
+  background: var(--biru);
+  border-color: var(--biru);
+  color: #fff;
+}
+
+.utama:hover {
+  background: var(--biru-tua);
+}
+
+.kecil {
+  padding: 4px 12px;
+  font-size: 14px;
+}
+
+.merah {
+  color: #c0362c;
+}
+
+.cari {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cari input {
+  flex: 1;
+}
+
+.cari select {
+  width: 200px;
+}
+
+.kartu {
+  background: #fff;
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.kartu-auth table {
+  min-width: 0;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--garis);
+}
+
+th {
+  font-size: 14px;
+  color: var(--redup);
+  background: #fafbfd;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+td form {
+  display: inline;
+}
+
+.lencana {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.baik {
+  background: #dcf5e6;
+  color: #166534;
+}
+
+.perbaikan {
+  background: #fdf0c8;
+  color: #8a5a00;
+}
+
+.rusak {
+  background: #fde0dd;
+  color: #b42318;
+}
+
+.form-kartu {
+  background: #fff;
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 640px;
+}
+
+.kolom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.penuh {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.aksi {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+@media (max-width: 560px) {
+  .kolom {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pesan {
+  background: #dcf5e6;
+  color: #166534;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.galat {
+  background: #fde0dd;
+  color: #b42318;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.galat ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.bahaya {
+  background: #c0362c;
+  border-color: #c0362c;
+  color: #fff;
+}
+
+.kosong {
+  text-align: center;
+  color: var(--redup);
+}
+
+
+.baris-pengguna {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-top: 14px;
+}
+
+.info-pengguna {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.lencana-peran {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.peran-admin {
+  background: #dcf5e6;
+  color: #166534;
+}
+
+.peran-member {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.tombol-logout {
+  font-size: 13px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #fff;
+  color: #b42318;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.tombol-logout:hover {
+  background: #fee4e2;
+  border-color: #b42318;
+}
+
+.halaman-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+  background: var(--latar);
+}
+
+.wadah-auth {
+  width: 100%;
+  max-width: 420px;
+}
+
+.kartu-auth {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--garis);
+  padding: 28px 24px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-header h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  color: var(--biru-tua);
+}
+
+.auth-header p {
+  margin: 0;
+  color: var(--redup);
+  font-size: 14px;
+}
+
+.box-akun-dosen {
+  background: #f8fafc;
+  border: 1.5px dashed #94a3b8;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 24px;
+}
+
+.box-akun-header {
+  font-weight: 700;
+  font-size: 13px;
+  color: #334155;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.grid-akun {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .grid-akun {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kartu-akun {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kartu-akun:hover {
+  border-color: var(--biru);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(47, 75, 216, 0.15);
+}
+
+.kartu-akun.kartu-admin {
+  border-left: 4px solid #16a34a;
+}
+
+.kartu-akun.kartu-member {
+  border-left: 4px solid #0284c7;
+}
+
+.badge-role-admin {
+  background: #dcf5e6;
+  color: #166534;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.badge-role-member {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.kartu-akun p {
+  margin: 2px 0;
+  line-height: 1.4;
+  color: #475569;
+}
+
+.kartu-akun code {
+  background: #f1f5f9;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #0f172a;
+}
+
+.btn-pilih-akun {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 5px 6px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  text-align: center;
+}
+
+.kartu-akun:hover .btn-pilih-akun {
+  background: var(--biru);
+  color: #fff;
+  border-color: var(--biru);
+}
+
+.auth-form .grup-input {
+  margin-bottom: 16px;
+}
+
+.auth-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--teks);
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.auth-form input:focus {
+  border-color: var(--biru);
+  box-shadow: 0 0 0 3px rgba(47, 75, 216, 0.1);
+}
+
+.tombol-blok {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--biru);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.tombol-blok:hover {
+  background: var(--biru-tua);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--redup);
+}
+
+.auth-footer a {
+  color: var(--biru);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+
+.foto-lapangan {
+  width: 80px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--garis);
+}
+
+.foto-kosong {
+  width: 80px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border: 1px dashed #cbd5e1;
+  border-radius: 6px;
+  font-size: 10px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.tabel-akun-demo {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.tabel-akun-demo thead th {
+  background: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teks);
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: none;
+}
+
+.tabel-akun-demo thead td {
+  font-size: 11px;
+  color: var(--redup);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--garis);
+}
+
+.tabel-akun-demo tbody tr {
+  transition: background 0.15s;
+}
+
+.tabel-akun-demo tbody tr:hover {
+  background: #f8fafc;
+}
+
+.tabel-akun-demo tbody td {
+  padding: 8px;
+  border-bottom: none;
+}
