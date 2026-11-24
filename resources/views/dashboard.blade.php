@@ -137,74 +137,74 @@
             </div>
         </div>
 
-        <div class="dashboard-grid">
-            <div class="dashboard-col-main" style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="card module-card highlight">
-                    <div class="card-icon-wrapper">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                            <line x1="12" y1="4" x2="12" y2="20"></line>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                    </div>
-                    <div class="module-details">
-                        <h3>Kelola Data Lapangan & Fasilitas</h3>
-                        <p>Akses daftar lengkap lapangan venue, informasi jenis permukaan/lantai, ukuran fisik lapangan, status kondisi fasilitas, dan dokumentasi foto.</p>
-                        <div class="module-actions">
-                            <a href="{{ route('lapangan.index') }}" class="btn btn-primary">
-                                Buka Data Lapangan
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="card module-card highlight">
+                <div class="card-icon-wrapper">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+                <div class="module-details">
+                    <h3>Kelola Data Lapangan & Fasilitas</h3>
+                    <p>Akses daftar lengkap lapangan venue, informasi jenis permukaan/lantai, ukuran fisik lapangan, status kondisi fasilitas, dan dokumentasi foto.</p>
+                    <div class="module-actions">
+                        <a href="{{ route('lapangan.index') }}" class="btn btn-primary">
+                            Buka Data Lapangan
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                        @if (auth()->user()->role === 'admin')
+                            <a href="{{ route('lapangan.create') }}" class="btn btn-outline">
+                                + Tambah Lapangan
                             </a>
-                            @if (auth()->user()->role === 'admin')
-                                <a href="{{ route('lapangan.create') }}" class="btn btn-outline">
-                                    + Tambah Lapangan
-                                </a>
-                            @endif
-                        </div>
+                        @endif
                     </div>
                 </div>
+            </div>
 
+            <div class="card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-main);">Daftar Area Venue</h3>
+                        <p style="margin: 2px 0 0 0; font-size: 13px; color: var(--text-muted);">Area olahraga yang terdaftar dalam venue</p>
+                    </div>
+                    <span class="badge" style="background-color: var(--primary-light); color: var(--primary); font-weight: 600; padding: 4px 10px; border-radius: 20px; font-size: 12px;">
+                        {{ $areas->count() }} Area Terdaftar
+                    </span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+                    @foreach ($areas as $area)
+                        <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background-color: #f8fafc;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <h4 style="margin: 0; font-size: 15px; font-weight: 700; color: var(--text-main);">{{ $area->nama_area }}</h4>
+                                <span class="badge" style="background-color: {{ $area->tipe === 'indoor' ? '#dbeafe' : '#fef3c7' }}; color: {{ $area->tipe === 'indoor' ? '#1e40af' : '#92400e' }}; font-size: 11px; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; font-weight: 700;">
+                                    {{ $area->tipe }}
+                                </span>
+                            </div>
+                            <p style="margin: 8px 0 0 0; font-size: 13px; color: var(--text-muted);">
+                                {{ $area->deskripsi ?? 'Area fasilitas olahraga venue.' }}
+                            </p>
+                            <div style="margin-top: 12px; font-size: 12.5px; font-weight: 600; color: var(--primary);">
+                                {{ $area->lapangans_count }} Lapangan tersedia
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            @if ($lapangansTerbaru->count() > 0)
                 <div class="card" style="padding: 24px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
                         <div>
-                            <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-main);">Daftar Area Venue</h3>
-                            <p style="margin: 2px 0 0 0; font-size: 13px; color: var(--text-muted);">Area olahraga yang terdaftar dalam venue</p>
+                            <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-main);">Lapangan Terbaru</h3>
+                            <p style="margin: 2px 0 0 0; font-size: 13px; color: var(--text-muted);">Fasilitas lapangan yang baru ditambahkan</p>
                         </div>
-                        <span class="badge" style="background-color: var(--primary-light); color: var(--primary); font-weight: 600; padding: 4px 10px; border-radius: 20px; font-size: 12px;">
-                            {{ $areas->count() }} Area Terdaftar
-                        </span>
+                        <a href="{{ route('lapangan.index') }}" style="font-size: 13px; font-weight: 600;">Lihat Semua &rarr;</a>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-                        @foreach ($areas as $area)
-                            <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; background-color: #f8fafc;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                                    <h4 style="margin: 0; font-size: 14.5px; font-weight: 700; color: var(--text-main);">{{ $area->nama_area }}</h4>
-                                    <span class="badge" style="background-color: {{ $area->tipe === 'indoor' ? '#dbeafe' : '#fef3c7' }}; color: {{ $area->tipe === 'indoor' ? '#1e40af' : '#92400e' }}; font-size: 11px; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; font-weight: 700;">
-                                        {{ $area->tipe }}
-                                    </span>
-                                </div>
-                                <p style="margin: 6px 0 0 0; font-size: 13px; color: var(--text-muted);">
-                                    {{ $area->deskripsi ?? 'Area fasilitas olahraga venue.' }}
-                                </p>
-                                <div style="margin-top: 10px; font-size: 12.5px; font-weight: 600; color: var(--primary);">
-                                    {{ $area->lapangans_count }} Lapangan tersedia
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                @if ($lapangansTerbaru->count() > 0)
-                    <div class="card" style="padding: 24px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-                            <div>
-                                <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-main);">Lapangan Terbaru</h3>
-                                <p style="margin: 2px 0 0 0; font-size: 13px; color: var(--text-muted);">Fasilitas lapangan yang baru ditambahkan</p>
-                            </div>
-                            <a href="{{ route('lapangan.index') }}" style="font-size: 13px; font-weight: 600;">Lihat Semua &rarr;</a>
-                        </div>
-
+                    <div style="overflow-x: auto;">
                         <table>
                             <thead>
                                 <tr>
@@ -232,68 +232,8 @@
                             </tbody>
                         </table>
                     </div>
-                @endif
-            </div>
-
-            <div class="dashboard-col-side">
-                <div class="card permission-card">
-                    <div class="card-title-row">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        <h4>Ringkasan Hak Akses Anda</h4>
-                    </div>
-                    <ul class="permission-list">
-                        <li class="active">
-                            <span class="icon-check">✓</span>
-                            <div>
-                                <strong>Akses Dashboard</strong>
-                                <small>Melihat beranda dan ringkasan statistik</small>
-                            </div>
-                        </li>
-                        <li class="active">
-                            <span class="icon-check">✓</span>
-                            <div>
-                                <strong>Lihat Data Lapangan</strong>
-                                <small>Melihat daftar & foto lapangan venue</small>
-                            </div>
-                        </li>
-                        <li class="{{ auth()->user()->role === 'admin' ? 'active' : 'disabled' }}">
-                            <span class="icon-check">{{ auth()->user()->role === 'admin' ? '✓' : '✕' }}</span>
-                            <div>
-                                <strong>Tambah Lapangan Baru</strong>
-                                <small>Mendaftarkan fasilitas lapangan ke sistem</small>
-                            </div>
-                        </li>
-                        <li class="{{ auth()->user()->role === 'admin' ? 'active' : 'disabled' }}">
-                            <span class="icon-check">{{ auth()->user()->role === 'admin' ? '✓' : '✕' }}</span>
-                            <div>
-                                <strong>Ubah & Perbarui Data</strong>
-                                <small>Memperbarui spesifikasi & status fisik</small>
-                            </div>
-                        </li>
-                        <li class="{{ auth()->user()->role === 'admin' ? 'active' : 'disabled' }}">
-                            <span class="icon-check">{{ auth()->user()->role === 'admin' ? '✓' : '✕' }}</span>
-                            <div>
-                                <strong>Upload & Ganti Foto</strong>
-                                <small>Dokumentasi foto fasilitas lapangan</small>
-                            </div>
-                        </li>
-                        <li class="{{ auth()->user()->role === 'admin' ? 'active' : 'disabled' }}">
-                            <span class="icon-check">{{ auth()->user()->role === 'admin' ? '✓' : '✕' }}</span>
-                            <div>
-                                <strong>Hapus Data Lapangan</strong>
-                                <small>Khusus hak akses Administrator</small>
-                            </div>
-                        </li>
-                    </ul>
-
-                    @if (auth()->user()->role !== 'admin')
-                        <div class="alert-info" style="margin-top: 18px;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            <span>Akun Member memiliki hak akses baca (read-only) untuk ketersediaan dan informasi lapangan.</span>
-                        </div>
-                    @endif
                 </div>
-            </div>
+            @endif
         </div>
     </main>
 
