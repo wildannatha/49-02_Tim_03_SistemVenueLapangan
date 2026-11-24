@@ -1,10 +1,14 @@
 @props(['title'])
 
 <x-layouts.base :title="$title">
-    <main class="container container-xs guest">
-        <div class="card">
-            <h1>{{ $title }}</h1>
+    <main class="main-content">
+        <div class="form-card">
+            <h1 class="form-title">{{ $title }}</h1>
 
+            @if (session('status'))
+                <div class="alert-success">{{ session('status') }}</div>
+            @endif
+            
             {{ $slot }}
         </div>
     </main>

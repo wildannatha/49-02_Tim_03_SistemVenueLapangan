@@ -1,11 +1,11 @@
-@props(['title', 'width' => 'md'])
+@props(['title'])
 
 <x-layouts.base :title="$title">
     <x-nav />
 
-    <main class="container container-{{ $width }}">
+    <main class="main-content">
         @if (session('status'))
-            <div class="alert alert-success">{{ session('status') }}</div>
+            <div class="alert-success">{{ session('status') }}</div>
         @endif
 
         {{ $slot }}

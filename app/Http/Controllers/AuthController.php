@@ -47,12 +47,10 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::create($validated);
+        User::create($validated);
 
-        Auth::login($user);
-        $request->session()->regenerate();
-
-        return redirect($user->homeUrl());
+return to_route('login')
+    ->with('status', 'Pendaftaran berhasil. Silakan login.');
     }
 
     public function logout(Request $request): RedirectResponse

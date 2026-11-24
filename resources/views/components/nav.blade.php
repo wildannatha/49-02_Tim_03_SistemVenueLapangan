@@ -2,26 +2,43 @@
     $user = auth()->user();
 @endphp
 
-<nav class="navbar">
-    <div class="navbar-links">
-        @if ($user->isAdmin())
-            <a href="{{ route('dashboard') }}" @class(['active' => request()->routeIs('dashboard')])>Dashboard</a>
-        @endif
+<header class="app-navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="{{ $user->homeUrl() }}" class="nav-brand">
+                <span class="brand-icon"><x-ui-icon name="user" /></span>
+                <span>Sistem<strong>Venue</strong></span>
+            </a>
 
-        <a href="{{ route('pemesanan.create') }}" @class(['active' => request()->routeIs('pemesanan.create', 'pemesanan.edit')])>Input Data</a>
-        <a href="{{ route('pemesanan.index') }}" @class(['active' => request()->routeIs('pemesanan.index')])>Data Pemesanan</a>
+            <nav class="nav-links">
+                @if ($user->isAdmin())
+                    <a href="{{ route('dashboard') }}" @class(['nav-link', 'active' => request()->routeIs('dashboard')])>Dashboard</a>
+                @endif
 
-        @if ($user->isAdmin())
-            <a href="{{ url('/admin') }}">Panel Admin</a>
-        @endif
+                <a href="{{ route('pemesanan.create') }}" @class(['nav-link', 'active' => request()->routeIs('pemesanan.create', 'pemesanan.edit')])>Input Pemesanan</a>
+                <a href="{{ route('pemesanan.index') }}" @class(['nav-link', 'active' => request()->routeIs('pemesanan.index')])>Data Pemesanan</a>
+
+                @if ($user->isAdmin())
+                    <a href="{{ url('/admin') }}" class="nav-link">Panel Admin</a>
+                @endif
+            </nav>
+        </div>
+
+        <div class="nav-right">
+            <div class="user-profile-badge">
+                <span class="user-avatar">{{ mb_strtoupper(mb_substr($user->name, 0, 1)) }}</span>
+                <div class="user-info">
+                    <span class="user-name">{{ $user->name }}</span>
+                    <span class="badge-role {{ $user->role }}">{{ $user->role }}</span>
+                </div>
+            </div>
+
+            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                @csrf
+                <button type="submit" class="btn-logout">
+                    <x-ui-icon name="logout" :size="16" /> Keluar
+                </button>
+            </form>
+        </div>
     </div>
-
-    <div class="navbar-user">
-        <span>{{ $user->name }} ({{ $user->role }})</span>
-
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
-    </div>
-</nav>
+</header>
