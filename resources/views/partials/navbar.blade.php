@@ -16,9 +16,6 @@
         <a href="{{ route('lapangan.index') }}" class="nav-link">Data Lapangan</a>
         <a href="{{ route('pelanggan.index') }}" class="nav-link">Data Pelanggan</a>
         <a href="{{ route('instruktur.index') }}" class="nav-link {{ $active === 'index' ? 'active' : '' }}">Data Instruktur</a>
-        @if ($u->role === 'admin')
-          <a href="{{ route('instruktur.create') }}" class="nav-link {{ $active === 'create' ? 'active' : '' }}">Tambah Instruktur</a>
-        @endif
       </nav>
     </div>
 

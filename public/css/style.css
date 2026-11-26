@@ -68,11 +68,11 @@ a:hover { color: var(--primary-hover); }
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
 }
-.nav-links { display: flex; gap: 6px; }
+.nav-links { display: flex; gap: 6px; align-items: center; }
 .nav-link {
     padding: 8px 14px; font-size: 14px; font-weight: 500;
     color: var(--text-muted); border-radius: var(--radius-sm);
-    transition: all 0.15s ease;
+    transition: all 0.15s ease; white-space: nowrap;
 }
 .nav-link:hover { color: var(--text-main); background-color: #f1f5f9; }
 .nav-link.active { color: var(--primary); background-color: var(--primary-light); font-weight: 600; }
@@ -91,7 +91,7 @@ a:hover { color: var(--primary-hover); }
     font-size: 13px; font-weight: 700;
 }
 .user-info { display: flex; align-items: center; gap: 8px; }
-.user-name { font-size: 13.5px; font-weight: 600; color: var(--text-main); }
+.user-name { font-size: 13.5px; font-weight: 600; color: var(--text-main); white-space: nowrap; }
 .logout-form { margin: 0; }
 .btn-logout {
     display: inline-flex; align-items: center; gap: 6px;
