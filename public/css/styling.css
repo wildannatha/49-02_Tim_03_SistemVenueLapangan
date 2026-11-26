@@ -809,7 +809,8 @@ tr:hover td {
     margin: 0 0 24px 0;
 }
 
-.form-card label {
+.form-card label,
+.form-card-wide label {
     display: block;
     font-size: 13.5px;
     font-weight: 600;
@@ -819,26 +820,58 @@ tr:hover td {
 
 .form-card input,
 .form-card select,
-.form-card textarea {
+.form-card textarea,
+.form-card-wide input,
+.form-card-wide select,
+.form-card-wide textarea {
     width: 100%;
     padding: 10px 14px;
     font-family: inherit;
     font-size: 14px;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    margin-bottom: 18px;
     box-sizing: border-box;
     background-color: #f8fafc;
+    color: var(--text-main);
     transition: all 0.15s ease;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    margin-bottom: 18px;
+}
+
+.form-card-wide input,
+.form-card-wide select,
+.form-card-wide textarea {
+    margin-bottom: 0;
 }
 
 .form-card input:focus,
 .form-card select:focus,
-.form-card textarea:focus {
+.form-card textarea:focus,
+.form-card-wide input:focus,
+.form-card-wide select:focus,
+.form-card-wide textarea:focus {
     border-color: var(--primary);
     background-color: #ffffff;
     outline: none;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-card input[type="file"],
+.form-card-wide input[type="file"] {
+    background-color: #f8fafc;
+    border: 1px dashed var(--border-color);
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.form-card input[type="file"]:hover,
+.form-card-wide input[type="file"]:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
 }
 
 .form-button {
@@ -867,3 +900,158 @@ tr:hover td {
 }
 
 
+/* Lapangan Specific Styles */
+.foto-lapangan {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    display: block;
+}
+
+.foto-kosong {
+    width: 72px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 10px;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.lencana-baik {
+    background-color: #dcfce7;
+    color: #15803d;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #bbf7d0;
+    display: inline-block;
+}
+
+.lencana-perbaikan {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #fde68a;
+    display: inline-block;
+}
+
+.lencana-rusak {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #fecaca;
+    display: inline-block;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background-color: #ffffff;
+    color: var(--text-main);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-sm:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.btn-sm-danger {
+    color: #ef4444;
+    border-color: #fee2e2;
+}
+
+.btn-sm-danger:hover {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+    color: #b91c1c;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+}
+
+.form-grid-2 > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-span-2 {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.form-card-wide {
+    max-width: 760px;
+    width: 100%;
+    margin: 28px auto;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    box-shadow: var(--shadow-sm);
+}
+
+.tabel-akun-demo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-top: 16px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.tabel-akun-demo th {
+    background: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabel-akun-demo td {
+    padding: 8px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 12.5px;
+}
+
+.tabel-akun-demo tbody tr {
+    transition: background 0.15s;
+}
+
+.tabel-akun-demo tbody tr:hover {
+    background-color: #f8fafc;
+}
