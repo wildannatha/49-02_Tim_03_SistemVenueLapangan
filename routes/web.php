@@ -1,25 +1,42 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\InstrukturController;
+use App\Models\Area;
+use App\Models\Lapangan;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.proses');
+
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.proses');
 });
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post')->middleware('guest');
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register')->middleware('guest');
-Route::post('/register', [AuthController::class, 'register'])->name('register.post')->middleware(['guest', 'throttle:5,1']);
+    Route::get('/', fn () => redirect()->route('dashboard'));
+    Route::get('/dashboard', function () {
+        $totalLapangan = Lapangan::count();
+        $lapanganBaik = Lapangan::where('status_fisik', 'baik')->count();
+        $lapanganPerbaikan = Lapangan::whereIn('status_fisik', ['perlu_perbaikan', 'rusak'])->count();
+        $totalArea = Area::count();
+        $areas = Area::withCount('lapangans')->get();
+        $lapangansTerbaru = Lapangan::with('area')->latest('id')->take(5)->get();
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+        return view('dashboard', compact(
+            'totalLapangan',
+            'lapanganBaik',
+            'lapanganPerbaikan',
+            'totalArea',
+            'areas',
+            'lapangansTerbaru'
+        ));
+    })->name('dashboard');
 
     Route::resource('lapangan', LapanganController::class);
     Route::resource('pelanggan', PelangganController::class)->except('show');
