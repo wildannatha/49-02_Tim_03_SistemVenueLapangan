@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Form Pelanggan</title>
-    <link rel="stylesheet" href="{{ asset('css/styling.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styling_n.css') }}">
 </head>
 <body>
 
