@@ -865,3 +865,89 @@ tr:hover td {
 .userbar form {
     margin: 0;
 }
+
+
+/* ==========================================================================
+   Pelanggan Summary Cards, Badges & Navbar Fixes
+   ========================================================================== */
+.nav-links {
+    align-items: center;
+}
+.nav-link,
+.user-name {
+    white-space: nowrap;
+}
+.badge-role {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+.role-admin { background-color: #fef3c7; color: #b45309; }
+.role-staff { background-color: #dbeafe; color: #1d4ed8; }
+.role-member { background-color: #f1f5f9; color: #475569; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    color: #ffffff;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.summary-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+}
+.summary-card p {
+    margin: 0 0 4px 0;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.summary-card h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.badge-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.badge-pill.basic { background-color: #f1f5f9; color: #475569; }
+.badge-pill.gold { background-color: #fef3c7; color: #b45309; }
+.badge-pill.vip { background-color: #ede9fe; color: #6d28d9; }
+.badge-pill.aktif { background-color: #dcfce7; color: #15803d; }
+.badge-pill.nonaktif { background-color: #fee2e2; color: #b91c1c; }

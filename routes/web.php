@@ -4,8 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InstrukturController;
 use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PemesananController;
 use App\Models\Area;
 use App\Models\Lapangan;
+use App\Models\Pemesanan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -42,6 +44,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('pelanggan', PelangganController::class)->except('show');
 
     Route::get('/instruktur', [InstrukturController::class, 'index'])->name('instruktur.index');
+
+    Route::prefix('pemesanan-user')
+        ->name('pemesanan.')
+        ->controller(PemesananController::class)
+        ->group(function () {
+            Route::get('/data', 'index')->can('viewAny', Pemesanan::class)->name('index');
+            Route::get('/', 'create')->can('create', Pemesanan::class)->name('create');
+            Route::post('/', 'store')->can('create', Pemesanan::class)->name('store');
+            Route::get('/{pemesanan}/edit', 'edit')->can('update', 'pemesanan')->name('edit');
+            Route::put('/{pemesanan}', 'update')->can('update', 'pemesanan')->name('update');
+            Route::delete('/{pemesanan}', 'destroy')->can('delete', 'pemesanan')->name('destroy');
+        });
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

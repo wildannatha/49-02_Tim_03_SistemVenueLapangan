@@ -26,6 +26,7 @@
                     <a href="{{ route('lapangan.index') }}" class="nav-link">Data Lapangan</a>
                     <a href="{{ route('pelanggan.index') }}" class="nav-link">Data Pelanggan</a>
                     <a href="{{ route('instruktur.index') }}" class="nav-link">Data Instruktur</a>
+                    <a href="{{ route('pemesanan.index') }}" class="nav-link">Data Pemesanan</a>
                 </nav>
             </div>
 
@@ -209,6 +210,29 @@
                                 + Tambah Instruktur
                             </a>
                         @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="card module-card">
+                <div class="card-icon-wrapper">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </div>
+                <div class="module-details">
+                    <h3>Kelola Pemesanan Alat Olahraga</h3>
+                    <p>Kelola pemesanan sewa raket, sepatu, dan bola beserta jadwal pemesanan dan perhitungan total pembayaran otomatis.</p>
+                    <div class="module-actions">
+                        <a href="{{ route('pemesanan.index') }}" class="btn btn-primary">
+                            Buka Data Pemesanan
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                        <a href="{{ route('pemesanan.create') }}" class="btn btn-outline">
+                            + Tambah Pemesanan
+                        </a>
                     </div>
                 </div>
             </div>

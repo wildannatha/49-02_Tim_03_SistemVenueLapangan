@@ -16,6 +16,7 @@
         <a href="{{ route('lapangan.index') }}" class="nav-link">Data Lapangan</a>
         <a href="{{ route('pelanggan.index') }}" class="nav-link">Data Pelanggan</a>
         <a href="{{ route('instruktur.index') }}" class="nav-link {{ $active === 'index' ? 'active' : '' }}">Data Instruktur</a>
+        <a href="{{ route('pemesanan.index') }}" class="nav-link">Data Pemesanan</a>
       </nav>
     </div>
 

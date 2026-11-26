@@ -1055,3 +1055,8 @@ tr:hover td {
 .tabel-akun-demo tbody tr:hover {
     background-color: #f8fafc;
 }
+
+
+/* Navbar nowrap fix for 5 menu items */
+.nav-links { align-items: center; }
+.nav-link, .user-name { white-space: nowrap; }
