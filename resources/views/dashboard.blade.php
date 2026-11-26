@@ -24,6 +24,7 @@
                 <nav class="nav-links">
                     <a href="{{ route('dashboard') }}" class="nav-link active">Dashboard</a>
                     <a href="{{ route('lapangan.index') }}" class="nav-link">Data Lapangan</a>
+                    <a href="{{ route('pelanggan.index') }}" class="nav-link">Data Pelanggan</a>
                 </nav>
             </div>
 
