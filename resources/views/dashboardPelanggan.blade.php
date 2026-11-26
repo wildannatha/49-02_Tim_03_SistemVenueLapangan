@@ -92,6 +92,7 @@
             </div>
         @endif
 
+<<<<<<< HEAD
         <!-- Modules & Content Grid -->
         <div class="dashboard-grid">
             <!-- Left Column: Primary Access Module -->
@@ -181,8 +182,147 @@
                             </div>
                         </li>
                     </ul>
+=======
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 24px;">
+            <div class="card" style="display: flex; align-items: center; gap: 16px; padding: 20px;">
+                <div class="card-icon-wrapper" style="width: 46px; height: 46px; background-color: var(--primary-light); color: var(--primary);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                </div>
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Total Lapangan</span>
+                    <h2 style="margin: 2px 0 0 0; font-size: 24px; font-weight: 800; color: var(--text-main);">{{ $totalLapangan }}</h2>
                 </div>
             </div>
+
+            <div class="card" style="display: flex; align-items: center; gap: 16px; padding: 20px;">
+                <div class="card-icon-wrapper" style="width: 46px; height: 46px; background-color: #dcfce7; color: #15803d;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: #15803d; text-transform: uppercase;">Kondisi Baik (Siap)</span>
+                    <h2 style="margin: 2px 0 0 0; font-size: 24px; font-weight: 800; color: #15803d;">{{ $lapanganBaik }}</h2>
+                </div>
+            </div>
+
+            <div class="card" style="display: flex; align-items: center; gap: 16px; padding: 20px;">
+                <div class="card-icon-wrapper" style="width: 46px; height: 46px; background-color: #fef3c7; color: #b45309;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: #b45309; text-transform: uppercase;">Perlu Perawatan</span>
+                    <h2 style="margin: 2px 0 0 0; font-size: 24px; font-weight: 800; color: #b45309;">{{ $lapanganPerbaikan }}</h2>
+                </div>
+            </div>
+
+            <div class="card" style="display: flex; align-items: center; gap: 16px; padding: 20px;">
+                <div class="card-icon-wrapper" style="width: 46px; height: 46px; background-color: #ede9fe; color: #6d28d9;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: #6d28d9; text-transform: uppercase;">Area Venue</span>
+                    <h2 style="margin: 2px 0 0 0; font-size: 24px; font-weight: 800; color: #6d28d9;">{{ $totalArea }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="card module-card highlight">
+                <div class="card-icon-wrapper">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+                <div class="module-details">
+                    <h3>Kelola Data Lapangan & Fasilitas</h3>
+                    <p>Akses daftar lengkap lapangan venue, informasi jenis permukaan/lantai, ukuran fisik lapangan, status kondisi fasilitas, dan dokumentasi foto.</p>
+                    <div class="module-actions">
+                        <a href="{{ route('lapangan.index') }}" class="btn btn-primary">
+                            Buka Data Lapangan
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                        @if (auth()->user()->role === 'admin')
+                            <a href="{{ route('lapangan.create') }}" class="btn btn-outline">
+                                + Tambah Lapangan
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-main);">Daftar Area Venue</h3>
+                        <p style="margin: 2px 0 0 0; font-size: 13px; color: var(--text-muted);">Area olahraga yang terdaftar dalam venue</p>
+                    </div>
+                    <span class="badge" style="background-color: var(--primary-light); color: var(--primary); font-weight: 600; padding: 4px 10px; border-radius: 20px; font-size: 12px;">
+                        {{ $areas->count() }} Area Terdaftar
+                    </span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+                    @foreach ($areas as $area)
+                        <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; background-color: #f8fafc;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <h4 style="margin: 0; font-size: 15px; font-weight: 700; color: var(--text-main);">{{ $area->nama_area }}</h4>
+                                <span class="badge" style="background-color: {{ $area->tipe === 'indoor' ? '#dbeafe' : '#fef3c7' }}; color: {{ $area->tipe === 'indoor' ? '#1e40af' : '#92400e' }}; font-size: 11px; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; font-weight: 700;">
+                                    {{ $area->tipe }}
+                                </span>
+                            </div>
+                            <p style="margin: 8px 0 0 0; font-size: 13px; color: var(--text-muted);">
+                                {{ $area->deskripsi ?? 'Area fasilitas olahraga venue.' }}
+                            </p>
+                            <div style="margin-top: 12px; font-size: 12.5px; font-weight: 600; color: var(--primary);">
+                                {{ $area->lapangans_count }} Lapangan tersedia
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            @if ($lapangansTerbaru->count() > 0)
+                <div class="card" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <div>
+                            <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-main);">Lapangan Terbaru</h3>
+                            <p style="margin: 2px 0 0 0; font-size: 13px; color: var(--text-muted);">Fasilitas lapangan yang baru ditambahkan</p>
+                        </div>
+                        <a href="{{ route('lapangan.index') }}" style="font-size: 13px; font-weight: 600;">Lihat Semua &rarr;</a>
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Kode</th>
+                                    <th>Nama Lapangan</th>
+                                    <th>Area</th>
+                                    <th>Cabang Olahraga</th>
+                                    <th>Status Kondisi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($lapangansTerbaru as $lap)
+                                    <tr>
+                                        <td><strong>{{ $lap->kode }}</strong></td>
+                                        <td>{{ $lap->nama_lapangan }}</td>
+                                        <td>{{ $lap->area ? $lap->area->nama_area : '-' }}</td>
+                                        <td>{{ $lap->cabang_olahraga }}</td>
+                                        <td>
+                                            <span class="badge badge-{{ $lap->kelas_status }}">
+                                                {{ $lap->label_status }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+>>>>>>> 5da24f4189755c8475558500dc138b2ff798c472
+                </div>
+            @endif
         </div>
     </main>
 
